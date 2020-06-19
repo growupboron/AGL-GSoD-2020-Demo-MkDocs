@@ -1,0 +1,7 @@
+site_name: AGL-Doc Demo
+
+theme: readthedocs
+
+plugins:
+  - search
+
