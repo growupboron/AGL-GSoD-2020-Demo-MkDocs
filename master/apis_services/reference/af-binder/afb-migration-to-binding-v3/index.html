@@ -1,0 +1,2056 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../../../img/favicon.ico">
+  <title>Migration to bindings v3 - AGL-Doc Demo</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Migration to bindings v3";
+    var mkdocs_page_input_path = "master/apis_services/reference/af-binder/afb-migration-to-binding-v3.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../../../.." class="icon icon-home"> AGL-Doc Demo</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Flounder</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Apis services</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Af binder</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-binder/REVISIONS/">Document revision</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-binder/afb-application-writing/">Binder Application writing guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-binder/afb-binding-writing/">How to write a binding ?</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-binder/afb-daemon-debugging/">Debugging binder and bindings</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-binder/afb-daemon-options/">Options of afb-daemon</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-binder/afb-daemon-vocabulary/">Binder daemon vocabulary</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-binder/afb-desktop-package/">Installing the binder on a desktop</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-binder/afb-events-guide/">Binder events guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-binder/afb-migration-to-binding-v3/">Migration to bindings v3</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-binder/afb-overview/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-binder/protocol-x-afb-ws-json1/">WebSocket protocol x-afb-ws-json1</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">App framework</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Legacy</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Reference v3</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Af main</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-main/0-introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-main/1-afm-daemons/">The afm daemons</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-main/2-widgets/">Widgets</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-main/2.1-widgets/">Overview of widgets</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-main/2.2-config.xml/">Widget configuration file</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-main/3-permissions/">Permissions</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/af-main/4-quick-tutorial/">Quick Tutorial</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Afb test</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/afb-test/0_Installation/">Installation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/afb-test/1_Write_the_tests/">Write the tests</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/afb-test/2_The_test_widget/">The test widget</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/afb-test/3_Launch_the_tests/">Launch the tests</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/afb-test/4_Tests_Examples/">Tests examples</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Reference</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Api reference</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/api-reference/0-api-introduction/">API Reference</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Audio</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/audio/">PulseAudio - 4A Integration Module</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">4a framework</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Audio</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">High level api</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Candevstudio</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/candevstudio/1_Usage/">Usage Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/candevstudio/2_can_device_socketcan_backend/">Bringing up a CAN device using socketcan backend</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/candevstudio/3_Add_CAN_Device/">Add a CAN device in CANdevStudio</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/candevstudio/4_Configure_CanRawSender_Node/">Configure a CanRawSender node</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/candevstudio/5_Using_CanRawView/">Using CanRawView</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Hmi framework</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/hmi-framework/3_2-WindowManager-Guide/">Window Manager Developper Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/hmi-framework/3_3-SoundManager-Guide/">Sound Manager Developper Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/hmi-framework/ApplicationGuide/">Home Screen Developper Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/hmi-framework/Display_Audio_Transition1/">Sound Manager Developper Guide 2</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/hmi-framework/Display_Audio_Transition2/">Sound Manager Developper Guide 3</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/hmi-framework/homescreen_api/">HomeScreen API</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Part 1</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/part-1/1-Architecture/">Architecture presentation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/part-1/2-Configuration/">Configuration</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/part-1/3-Plugins/">Plugins</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/part-1/4-SignalComposerAPI/">Signal Composer API</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Signaling</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/signaling/1-Architecture/">Architecture presentation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/signaling/2-Install-Usage/">Installation and Usage Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/signaling/2-Installation/">Installation Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/signaling/3-Usage/">Usage Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/apis_services/reference/signaling/high-viwi-architecture/">Architecture presentation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Signaling</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Architecture</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Security</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/architecture/reference/security/">Introduction</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Annexes</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 1</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 2</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 3</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 4</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 5</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 6</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 7</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 8</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 9</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Devguides</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../flounder/devguides/agl-layers-overview/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../flounder/devguides/meta-agl-demo/">meta-agl-demo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../flounder/devguides/meta-agl-devel/">meta-agl-devel</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../flounder/devguides/meta-agl/">meta-agl</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../flounder/devguides/reference/0-build-microservice-overview/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../flounder/devguides/reference/1-verify-build-host/">Verify Your Build Host</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../flounder/devguides/reference/2-download-packages/">Download Packages</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../flounder/devguides/reference/3-installing-binder-daemon/">Installing the Binder Daemon</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../flounder/devguides/reference/4-getting-source-files/">Getting Your Source Files</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../flounder/devguides/reference/5-building-and-running-service-natively/">Building and Running Your Service Natively</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">2 4 Use app templates</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="#">Dev guide</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Ctrler</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/devguides/reference/ctrler/Usage/">Usage</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/devguides/reference/ctrler/configSample/">Configuration Sample</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/devguides/reference/ctrler/controller/">Installation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/devguides/reference/ctrler/controllerConfig/">Binding Configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Xds</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 1</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 2</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/app-workflow-boot/">Boot the Image on the Board</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/app-workflow-bootables/">Create Bootable Media</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/app-workflow-build-app/">Create and Build the Application</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/app-workflow-debug-app/">Debug the Application</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/app-workflow-deploy-app/">Deploy the Application to the Board</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/app-workflow-image/">Download or Build Your Image</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/app-workflow-intro/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/app-workflow-prep-app/">Get Ready to Create Your Application</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/app-workflow-sdk/">Download or Build Your SDK Installer</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/docker-container-setup/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/getting-started-welcome/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/image-workflow-build/">Building the AGL Image</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/image-workflow-cust-build/">Customizing Your Build</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/image-workflow-download-sw/">Downloading AGL Software</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/image-workflow-initialize-build-environment/">Initializing Your Build Environment</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/image-workflow-intro/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/image-workflow-prep-host/">Preparing Your Build Host</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/getting-started/troubleshooting/">Generic issues</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Machines</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Homescreen</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/getting_started/reference/homescreen/">Overview</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Hardware</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Renesas gen3</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/hardware/reference/renesas-gen3/gen3/">meta-rcar-gen3 Layer</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/hardware/reference/renesas-gen3/proprietary/">Proprietary Drivers</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Howto</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Handle docs</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/howto/reference/handle-docs/abstract/">Abstract</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/howto/reference/handle-docs/documentation-usage/">Usage</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../flounder/howto/reference/handle-docs/handle-docs/">How to add documentation to AGL</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guppy</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Apis services</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Af binder</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-binder/REVISIONS/">Document revision</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-binder/afb-application-writing/">Binder Application writing guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-binder/afb-binding-writing/">How to write a binding ?</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-binder/afb-daemon-debugging/">Debugging binder and bindings</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-binder/afb-daemon-options/">Options of afb-daemon</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-binder/afb-daemon-vocabulary/">Binder daemon vocabulary</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-binder/afb-desktop-package/">Installing the binder on a desktop</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-binder/afb-events-guide/">Binder events guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-binder/afb-migration-to-binding-v3/">Migration to bindings v3</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-binder/afb-overview/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-binder/protocol-x-afb-ws-json1/">WebSocket protocol x-afb-ws-json1</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">App framework</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Legacy</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Reference v3</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Af main</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-main/0-introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-main/1-afm-daemons/">The afm daemons</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-main/2-widgets/">Widgets</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-main/2.1-widgets/">Overview of widgets</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-main/2.2-config.xml/">Widget configuration file</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-main/3-permissions/">Permissions</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/af-main/4-quick-tutorial/">Quick Tutorial</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Afb test</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/afb-test/0_Installation/">Installation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/afb-test/1_Write_the_tests/">Write the tests</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/afb-test/2_The_test_widget/">The test widget</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/afb-test/3_Launch_the_tests/">Launch the tests</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/afb-test/4_Tests_Examples/">Tests examples</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Reference</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Api reference</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/api-reference/0-api-introduction/">API Reference</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Audio</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/audio/">Pulseaudio - 4A Integration Module</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">4a framework</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Audio</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">High level api</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Candevstudio</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/candevstudio/1_Usage/">Usage Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/candevstudio/2_can_device_socketcan_backend/">Bringing up a CAN device using socketcan backend</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/candevstudio/3_Add_CAN_Device/">Add a CAN device in CANdevStudio</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/candevstudio/4_Configure_CanRawSender_Node/">Configure a CanRawSender node</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/candevstudio/5_Using_CanRawView/">Using CanRawView</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Hmi framework</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/hmi-framework/3_2-WindowManager-Guide/">Window Manager Developer Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/hmi-framework/3_3-SoundManager-Guide/">Sound Manager Developper Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/hmi-framework/ApplicationGuide/">Home Screen Developper Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/hmi-framework/Display_Audio_Transition1/">Sound Manager Developper Guide 2</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/hmi-framework/Display_Audio_Transition2/">Sound Manager Developper Guide 3</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/hmi-framework/homescreen_api/">HomeScreen API</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Part 1</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/part-1/1-Architecture/">Architecture presentation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/part-1/2-Configuration/">Configuration</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/part-1/3-Plugins/">Plugins</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/part-1/4-SignalComposerAPI/">Signal Composer API</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Signaling</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/signaling/1-Architecture/">Architecture presentation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/signaling/2-Install-Usage/">Installation and Usage Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/signaling/2-Installation/">Installation Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/signaling/3-Usage/">Usage Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/apis_services/reference/signaling/high-viwi-architecture/">Architecture presentation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Signaling</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Architecture</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Security</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/architecture/reference/security/">Introduction</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Annexes</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 1</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 2</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 3</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 4</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 5</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 6</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 7</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 8</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 9</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Devguides</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../guppy/devguides/agl-layers-overview/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../guppy/devguides/meta-agl-demo/">meta-agl-demo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../guppy/devguides/meta-agl-devel/">meta-agl-devel</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../guppy/devguides/meta-agl/">meta-agl</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../guppy/devguides/reference/0-build-microservice-overview/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../guppy/devguides/reference/1-verify-build-host/">Verify Your Build Host</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../guppy/devguides/reference/2-download-packages/">Download Packages</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../guppy/devguides/reference/3-installing-binder-daemon/">Installing the Binder Daemon</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../guppy/devguides/reference/4-getting-source-files/">Getting Your Source Files</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../guppy/devguides/reference/5-building-and-running-service-natively/">Building and Running Your Service Natively</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Afb helpers</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/devguides/reference/afb-helpers/afb-timer/">AFB Timer</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/devguides/reference/afb-helpers/curl-wrap/">CURL wrapper</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/devguides/reference/afb-helpers/escape/">URL escaping</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/devguides/reference/afb-helpers/filescan-utils/">Filescan Utils</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/devguides/reference/afb-helpers/json/">JSON library for modern C++</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/devguides/reference/afb-helpers/qafbwebsocketclient/">Qt AFB Websocket client</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/devguides/reference/afb-helpers/usage/">Usage</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/devguides/reference/afb-helpers/wrap-json/">C JSON Wrapper</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Cmakeafbtemplates</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="#">Dev guide</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Ctrler</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/devguides/reference/ctrler/Usage/">Usage</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/devguides/reference/ctrler/configSample/">Config Sample</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/devguides/reference/ctrler/controller/">Installation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/devguides/reference/ctrler/controllerConfig/">Controller Configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Xds</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 1</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 2</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/app-workflow-boot/">Boot the Image on the Board</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/app-workflow-bootables/">Create Bootable Media</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/app-workflow-build-app/">Create and Build the Application</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/app-workflow-debug-app/">Debug the Application</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/app-workflow-deploy-app/">Deploy the Application to the Board</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/app-workflow-image/">Download or Build Your Image</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/app-workflow-intro/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/app-workflow-prep-app/">Get Ready to Create Your Application</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/app-workflow-sdk/">Download or Build Your SDK Installer</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/docker-container-setup/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/getting-started-welcome/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/image-workflow-build/">Building the AGL Image</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/image-workflow-cust-build/">Customizing Your Build</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/image-workflow-download-sw/">Downloading AGL Software</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/image-workflow-initialize-build-environment/">Initializing Your Build Environment</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/image-workflow-intro/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/image-workflow-prep-host/">Preparing Your Build Host</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/getting-started/troubleshooting/">Generic issues</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Machines</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Homescreen</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/getting_started/reference/homescreen/">Overview</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Hardware</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Renesas gen3</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/hardware/reference/renesas-gen3/gen3/">meta-rcar-gen3 Layer</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/hardware/reference/renesas-gen3/proprietary/">Proprietary Drivers</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Howto</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Handle docs</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/howto/reference/handle-docs/abstract/">Abstract</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/howto/reference/handle-docs/documentation-usage/">Usage</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../guppy/howto/reference/handle-docs/handle-docs/">How to add documentation to AGL</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Halibut</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Apis services</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Af binder</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-binder/REVISIONS/">Document revision</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-binder/afb-application-writing/">Binder Application writing guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-binder/afb-binding-writing/">How to write a binding ?</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-binder/afb-daemon-debugging/">Debugging binder and bindings</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-binder/afb-daemon-options/">Options of afb-daemon</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-binder/afb-daemon-vocabulary/">Binder daemon vocabulary</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-binder/afb-desktop-package/">Installing the binder on a desktop</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-binder/afb-events-guide/">Binder events guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-binder/afb-migration-to-binding-v3/">Migration to bindings v3</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-binder/afb-overview/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-binder/protocol-x-afb-ws-json1/">WebSocket protocol x-afb-ws-json1</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">App framework</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Legacy</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Reference v3</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Af main</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-main/0-introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-main/1-afm-daemons/">The afm daemons</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-main/2-widgets/">Widgets</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-main/2.1-widgets/">Overview of widgets</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-main/2.2-config.xml/">Widget configuration file</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-main/3-permissions/">Permissions</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/af-main/4-quick-tutorial/">Quick Tutorial</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Afb test</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/afb-test/0_Installation/">Installation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/afb-test/1_Write_the_tests/">Write the tests</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/afb-test/2_The_test_widget/">The test widget</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/afb-test/3_Launch_the_tests/">Launch the tests</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/afb-test/4_Tests_Examples/">Tests examples</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Reference</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Api reference</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/api-reference/0-api-introduction/">API Reference</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Audio</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/audio/">Pulseaudio - 4A Integration Module</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">4a framework</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Audio</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">High level api</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Candevstudio</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/candevstudio/1_Usage/">Usage Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/candevstudio/2_can_device_socketcan_backend/">Bringing up a CAN device using socketcan backend</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/candevstudio/3_Add_CAN_Device/">Add a CAN device in CANdevStudio</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/candevstudio/4_Configure_CanRawSender_Node/">Configure a CanRawSender node</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/candevstudio/5_Using_CanRawView/">Using CanRawView</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Hmi framework</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/hmi-framework/3_2-WindowManager-Guide/">Window Manager Developer Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/hmi-framework/3_3-SoundManager-Guide/">Sound Manager Developper Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/hmi-framework/ApplicationGuide/">Home Screen Developper Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/hmi-framework/Display_Audio_Transition1/">Sound Manager Developper Guide 2</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/hmi-framework/Display_Audio_Transition2/">Sound Manager Developper Guide 3</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/hmi-framework/homescreen_api/">HomeScreen API</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Part 1</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/part-1/1-Architecture/">Architecture presentation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/part-1/2-Configuration/">Configuration</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/part-1/3-Plugins/">Plugins</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/part-1/4-SignalComposerAPI/">Signal Composer API</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Signaling</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/signaling/1-Architecture/">Architecture presentation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/signaling/2-Install-Usage/">Installation and Usage Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/signaling/2-Installation/">Installation Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/signaling/3-Installation-J1939/">Installation Guide for J1939</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/signaling/4-Installation-ISOTP/">Installation Guide for ISOTP</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/signaling/5-Usage/">Usage Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/apis_services/reference/signaling/high-viwi-architecture/">Architecture presentation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Signaling</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Architecture</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Security</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/architecture/reference/security/">Introduction</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Annexes</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 1</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 2</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 3</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 4</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 5</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 6</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 7</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 8</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 9</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Devguides</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../halibut/devguides/agl-layers-overview/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../halibut/devguides/meta-agl-demo/">meta-agl-demo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../halibut/devguides/meta-agl-devel/">meta-agl-devel</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../halibut/devguides/meta-agl/">meta-agl</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../halibut/devguides/reference/0-build-microservice-overview/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../halibut/devguides/reference/1-verify-build-host/">Verify Your Build Host</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../halibut/devguides/reference/2-download-packages/">Download Packages</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../halibut/devguides/reference/3-installing-binder-daemon/">Installing the Binder Daemon</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../halibut/devguides/reference/4-getting-source-files/">Getting Your Source Files</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../halibut/devguides/reference/5-building-and-running-service-natively/">Building and Running Your Service Natively</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Afb helpers</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/devguides/reference/afb-helpers/afb-timer/">AFB Timer</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/devguides/reference/afb-helpers/curl-wrap/">CURL wrapper</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/devguides/reference/afb-helpers/escape/">URL escaping</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/devguides/reference/afb-helpers/filescan-utils/">Filescan Utils</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/devguides/reference/afb-helpers/json/">JSON library for modern C++</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/devguides/reference/afb-helpers/qafbwebsocketclient/">Qt AFB Websocket client</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/devguides/reference/afb-helpers/usage/">Usage</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/devguides/reference/afb-helpers/wrap-json/">C JSON Wrapper</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Cmakeafbtemplates</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="#">Dev guide</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Ctrler</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/devguides/reference/ctrler/Usage/">Usage</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/devguides/reference/ctrler/configSample/">Config Sample</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/devguides/reference/ctrler/controller/">Installation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/devguides/reference/ctrler/controllerConfig/">Controller Configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Xds</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 1</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 2</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/app-workflow-boot/">Boot the Image on the Board</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/app-workflow-bootables/">Create Bootable Media</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/app-workflow-build-app/">Create and Build the Application</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/app-workflow-debug-app/">Debug the Application</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/app-workflow-deploy-app/">Deploy the Application to the Board</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/app-workflow-image/">Download or Build Your Image</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/app-workflow-intro/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/app-workflow-prep-app/">Get Ready to Create Your Application</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/app-workflow-sdk/">Download or Build Your SDK Installer</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/docker-container-setup/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/getting-started-welcome/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/image-workflow-build/">Building the AGL Image</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/image-workflow-cust-build/">Customizing Your Build</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/image-workflow-download-sw/">Downloading AGL Software</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/image-workflow-initialize-build-environment/">Initializing Your Build Environment</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/image-workflow-intro/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/image-workflow-prep-host/">Preparing Your Build Host</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/getting-started/troubleshooting/">Generic issues</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Machines</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Homescreen</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/getting_started/reference/homescreen/">Overview</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Hardware</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Renesas gen3</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/hardware/reference/renesas-gen3/gen3/">meta-rcar-gen3 Layer</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/hardware/reference/renesas-gen3/proprietary/">Proprietary Drivers</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Howto</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Handle docs</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/howto/reference/handle-docs/abstract/">Abstract</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/howto/reference/handle-docs/documentation-usage/">Usage</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../halibut/howto/reference/handle-docs/handle-docs/">How to add documentation to AGL</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Icefish</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Apis services</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Af binder</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-binder/REVISIONS/">Document revision</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-binder/afb-application-writing/">Binder Application writing guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-binder/afb-binding-writing/">How to write a binding ?</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-binder/afb-daemon-debugging/">Debugging binder and bindings</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-binder/afb-daemon-options/">Options of afb-daemon</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-binder/afb-daemon-vocabulary/">Binder daemon vocabulary</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-binder/afb-desktop-package/">Installing the binder on a desktop</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-binder/afb-events-guide/">Binder events guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-binder/afb-migration-to-binding-v3/">Migration to bindings v3</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-binder/afb-overview/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-binder/protocol-x-afb-ws-json1/">WebSocket protocol x-afb-ws-json1</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">App framework</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Legacy</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Reference v3</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Af main</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-main/0-introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-main/1-afm-daemons/">The afm daemons</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-main/2-widgets/">Widgets</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-main/2.1-widgets/">Overview of widgets</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-main/2.2-config.xml/">Widget configuration file</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-main/3-permissions/">Permissions</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/af-main/4-quick-tutorial/">Quick Tutorial</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Afb test</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/afb-test/0_Installation/">Installation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/afb-test/1_Write_the_tests/">Write the tests</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/afb-test/2_The_test_widget/">The test widget</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/afb-test/3_Launch_the_tests/">Launch the tests</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/afb-test/4_Tests_Examples/">Tests examples</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Reference</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Api reference</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/api-reference/0-api-introduction/">API Reference</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Audio</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="#">Audio</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Candevstudio</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/candevstudio/1_Usage/">Usage Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/candevstudio/2_can_device_socketcan_backend/">Bringing up a CAN device using socketcan backend</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/candevstudio/3_Add_CAN_Device/">Add a CAN device in CANdevStudio</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/candevstudio/4_Configure_CanRawSender_Node/">Configure a CanRawSender node</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/candevstudio/5_Using_CanRawView/">Using CanRawView</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Hmi framework</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/hmi-framework/3_2-WindowManager-Guide/">Window Manager Developer Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/hmi-framework/3_3-SoundManager-Guide/">Sound Manager Developper Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/hmi-framework/ApplicationGuide/">Home Screen Developper Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/hmi-framework/Display_Audio_Transition1/">Sound Manager Developper Guide 2</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/hmi-framework/Display_Audio_Transition2/">Sound Manager Developper Guide 3</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/hmi-framework/homescreen_api/">HomeScreen API</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Part 1</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/part-1/1-Architecture/">Architecture presentation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/part-1/2-Configuration/">Configuration</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/part-1/3-Plugins/">Plugins</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/part-1/4-SignalComposerAPI/">Signal Composer API</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Signaling</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/signaling/1-Architecture/">Architecture presentation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/signaling/2-Install-Usage/">Installation and Usage Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/signaling/2-Installation/">Installation Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/signaling/3-Installation-J1939/">Installation Guide for J1939</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/signaling/4-Installation-ISOTP/">Installation Guide for ISOTP</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/signaling/5-Usage/">Usage Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/apis_services/reference/signaling/high-viwi-architecture/">Architecture presentation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Signaling</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Architecture</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Security</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/architecture/reference/security/">Introduction</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Annexes</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 1</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 2</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 3</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 4</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 5</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 6</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 7</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 8</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 9</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Devguides</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../icefish/devguides/agl-layers-overview/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../icefish/devguides/meta-agl-demo/">meta-agl-demo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../icefish/devguides/meta-agl-devel/">meta-agl-devel</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../../icefish/devguides/meta-agl/">meta-agl</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../icefish/devguides/reference/0-build-microservice-overview/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../icefish/devguides/reference/1-verify-build-host/">Verify Your Build Host</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../icefish/devguides/reference/2-download-packages/">Download Packages</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../icefish/devguides/reference/3-installing-binder-daemon/">Installing the Binder Daemon</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../icefish/devguides/reference/4-getting-source-files/">Getting Your Source Files</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../../icefish/devguides/reference/5-building-and-running-service-natively/">Building and Running Your Service Natively</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Afb helpers</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/devguides/reference/afb-helpers/afb-timer/">AFB Timer</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/devguides/reference/afb-helpers/curl-wrap/">CURL wrapper</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/devguides/reference/afb-helpers/escape/">URL escaping</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/devguides/reference/afb-helpers/filescan-utils/">Filescan Utils</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/devguides/reference/afb-helpers/json/">JSON library for modern C++</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/devguides/reference/afb-helpers/qafbwebsocketclient/">Qt AFB Websocket client</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/devguides/reference/afb-helpers/usage/">Usage</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/devguides/reference/afb-helpers/wrap-json/">C JSON Wrapper</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Cmakeafbtemplates</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="#">Dev guide</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Ctrler</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/devguides/reference/ctrler/Usage/">Usage</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/devguides/reference/ctrler/configSample/">Config Sample</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/devguides/reference/ctrler/controller/">Installation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/devguides/reference/ctrler/controllerConfig/">Controller Configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Xds</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 1</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 2</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/app-workflow-boot/">Boot the Image on the Board</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/app-workflow-bootables/">Create Bootable Media</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/app-workflow-build-app/">Create and Build the Application</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/app-workflow-debug-app/">Debug the Application</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/app-workflow-deploy-app/">Deploy the Application to the Board</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/app-workflow-image/">Download or Build Your Image</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/app-workflow-intro/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/app-workflow-prep-app/">Get Ready to Create Your Application</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/app-workflow-sdk/">Download or Build Your SDK Installer</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/docker-container-setup/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/getting-started-welcome/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/image-workflow-build/">Building the AGL Image</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/image-workflow-cust-build/">Customizing Your Build</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/image-workflow-download-sw/">Downloading AGL Software</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/image-workflow-initialize-build-environment/">Initializing Your Build Environment</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/image-workflow-intro/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/image-workflow-prep-host/">Preparing Your Build Host</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/getting-started/troubleshooting/">Generic issues</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Machines</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Homescreen</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/getting_started/reference/homescreen/">Overview</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Hardware</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Renesas gen3</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/hardware/reference/renesas-gen3/gen3/">meta-rcar-gen3 Layer</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/hardware/reference/renesas-gen3/proprietary/">Proprietary Drivers</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Howto</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Handle docs</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/howto/reference/handle-docs/abstract/">Abstract</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/howto/reference/handle-docs/documentation-usage/">Usage</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../../icefish/howto/reference/handle-docs/handle-docs/">How to add documentation to AGL</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Master</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Apis services</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Reference</a>
+    <ul class="current">
+                <li class="toctree-l3 current"><a class="reference internal current" href="#">Af binder</a>
+    <ul class="current">
+                <li class="toctree-l4"><a class="reference internal" href="../REVISIONS/">Document revision</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../afb-application-writing/">Binder Application writing guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../afb-binding-writing/">How to write a binding ?</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../afb-daemon-debugging/">Debugging binder and bindings</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../afb-daemon-options/">Options of afb-daemon</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../afb-daemon-vocabulary/">Binder daemon vocabulary</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../afb-desktop-package/">Installing the binder on a desktop</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../afb-events-guide/">Binder events guide</a>
+                </li>
+                <li class="toctree-l4 current"><a class="reference internal current" href="./">Migration to bindings v3</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../afb-overview/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../protocol-x-afb-ws-json1/">WebSocket protocol x-afb-ws-json1</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">App framework</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Legacy</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Reference v3</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Af main</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../af-main/0-introduction/">Introduction</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../af-main/1-afm-daemons/">The afm daemons</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../af-main/2-widgets/">Widgets</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../af-main/2.1-widgets/">Overview of widgets</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../af-main/2.2-config.xml/">Widget configuration file</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../af-main/3-permissions/">Permissions</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../af-main/4-quick-tutorial/">Quick Tutorial</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Afb test</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../afb-test/0_Installation/">Installation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../afb-test/1_Write_the_tests/">Write the tests</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../afb-test/2_The_test_widget/">The test widget</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../afb-test/3_Launch_the_tests/">Launch the tests</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../afb-test/4_Tests_Examples/">Tests examples</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Reference</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Api reference</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../api-reference/0-api-introduction/">API Reference</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Audio</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="#">Audio</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Candevstudio</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../candevstudio/1_Usage/">Usage Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../candevstudio/2_can_device_socketcan_backend/">Bringing up a CAN device using socketcan backend</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../candevstudio/3_Add_CAN_Device/">Add a CAN device in CANdevStudio</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../candevstudio/4_Configure_CanRawSender_Node/">Configure a CanRawSender node</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../candevstudio/5_Using_CanRawView/">Using CanRawView</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Hmi framework</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../hmi-framework/3_2-WindowManager-Guide/">Window Manager Developer Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../hmi-framework/3_3-SoundManager-Guide/">Sound Manager Developper Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../hmi-framework/ApplicationGuide/">Home Screen Developper Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../hmi-framework/Display_Audio_Transition1/">Sound Manager Developper Guide 2</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../hmi-framework/Display_Audio_Transition2/">Sound Manager Developper Guide 3</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../hmi-framework/homescreen_api/">HomeScreen API</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Part 1</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../part-1/1-Architecture/">Architecture presentation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../part-1/2-Configuration/">Configuration</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../part-1/3-Plugins/">Plugins</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../part-1/4-SignalComposerAPI/">Signal Composer API</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Signaling</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../signaling/1-Architecture/">Architecture presentation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../signaling/2-Install-Usage/">Installation and Usage Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../signaling/2-Installation/">Installation Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../signaling/3-Installation-J1939/">Installation Guide for J1939</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../signaling/4-Installation-ISOTP/">Installation Guide for ISOTP</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../signaling/5-Usage/">Usage Guide</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../signaling/high-viwi-architecture/">Architecture presentation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Signaling</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Architecture</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Security</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../architecture/reference/security/">Introduction</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Annexes</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 1</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 2</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 3</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 4</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 5</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 6</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 7</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 8</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 9</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Devguides</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../devguides/agl-layers-overview/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../devguides/meta-agl-demo/">meta-agl-demo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../devguides/meta-agl-devel/">meta-agl-devel</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../devguides/meta-agl/">meta-agl</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../devguides/reference/0-build-microservice-overview/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../devguides/reference/1-verify-build-host/">Verify Your Build Host</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../devguides/reference/2-download-packages/">Download Packages</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../devguides/reference/3-installing-binder-daemon/">Installing the Binder Daemon</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../devguides/reference/4-getting-source-files/">Getting Your Source Files</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../../devguides/reference/5-building-and-running-service-natively/">Building and Running Your Service Natively</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Afb helpers</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../devguides/reference/afb-helpers/afb-timer/">AFB Timer</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../devguides/reference/afb-helpers/curl-wrap/">CURL wrapper</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../devguides/reference/afb-helpers/escape/">URL escaping</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../devguides/reference/afb-helpers/filescan-utils/">Filescan Utils</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../devguides/reference/afb-helpers/json/">JSON library for modern C++</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../devguides/reference/afb-helpers/qafbwebsocketclient/">Qt AFB Websocket client</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../devguides/reference/afb-helpers/usage/">Usage</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../devguides/reference/afb-helpers/wrap-json/">C JSON Wrapper</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Cmakeafbtemplates</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="#">Dev guide</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Ctrler</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../devguides/reference/ctrler/Usage/">Usage</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../devguides/reference/ctrler/configSample/">Config Sample</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../devguides/reference/ctrler/controller/">Installation</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../devguides/reference/ctrler/controllerConfig/">Controller Configuration</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Xds</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 1</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Part 2</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Getting started</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/app-workflow-boot/">Boot the Image on the Board</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/app-workflow-bootables/">Create Bootable Media</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/app-workflow-build-app/">Create and Build the Application</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/app-workflow-debug-app/">Debug the Application</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/app-workflow-deploy-app/">Deploy the Application to the Board</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/app-workflow-image/">Download or Build Your Image</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/app-workflow-intro/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/app-workflow-prep-app/">Get Ready to Create Your Application</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/app-workflow-sdk/">Download or Build Your SDK Installer</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/docker-container-setup/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/getting-started-welcome/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/image-workflow-build/">Building the AGL Image</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/image-workflow-cust-build/">Customizing Your Build</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/image-workflow-download-sw/">Downloading AGL Software</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/image-workflow-initialize-build-environment/">Initializing Your Build Environment</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/image-workflow-intro/">Overview</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/image-workflow-prep-host/">Preparing Your Build Host</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/getting-started/troubleshooting/">Generic issues</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="#">Machines</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="#">Homescreen</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../getting_started/reference/homescreen/">Overview</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Hardware</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Renesas gen3</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../hardware/reference/renesas-gen3/gen3/">meta-rcar-gen3 Layer</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../hardware/reference/renesas-gen3/proprietary/">Proprietary Drivers</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Howto</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Reference</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="#">Handle docs</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../howto/reference/handle-docs/abstract/">Abstract</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../howto/reference/handle-docs/documentation-usage/">Usage</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../../howto/reference/handle-docs/handle-docs/">How to add documentation to AGL</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../..">AGL-Doc Demo</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Af binder &raquo;</li>
+        
+      
+        
+          <li>Reference &raquo;</li>
+        
+      
+        
+          <li>Apis services &raquo;</li>
+        
+      
+        
+          <li>Master &raquo;</li>
+        
+      
+    
+    <li>Migration to bindings v3</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <!-- WARNING: This file is generated by fetch_docs.js using /home/boron/Documents/AGL/docs-webtemplate/site/_data/tocs/apis_services/master/app-framework-binder-developer-guides-api-services-book.yml -->
+
+<h1 id="migration-to-binding-v3">Migration to binding V3</h1>
+<p>The <strong><em>binding</em></strong> interface evolved from version 1 to version 2
+for the following reasons:</p>
+<ul>
+<li>integration of the security requirements within the bindings</li>
+<li>simplification of the API (after developer feedbacks)</li>
+<li>removal of obscure features and cleanup</li>
+</ul>
+<p>The <strong><em>binder</em></strong> can run <strong><em>bindings</em></strong> v1, v2 and/or v3 in any combination.<br />
+Thus moving from v1 or v2 to v3 is not enforced at this time. But ...</p>
+<p>In the face to face meeting in Karlsruhe it was decided to remove support
+of bindings v1 and to deprecate the use of bindings v2.</p>
+<p>So at the end, <strong>IT IS HIGHLY NEEDED TO SWITCH TO VERSION 3</strong></p>
+<p>This guide covers the migration of bindings from version 2 to version 3.</p>
+<p>The migration from version 1 is not treated here because bindings version 1
+are very old and probably do not exist anymore. If needed you can refer
+to the old <a href="legacy/afb-migration-v1-to-v2.html">guide to migrate bindings from v1 to v2</a>.</p>
+<h2 id="differences-between-version-2-and-version-3">Differences between version 2 and version 3</h2>
+<h3 id="in-v3-all-is-api">in v3 all is api</h3>
+<p>The version 3 introduces the concept of "API" that gather what was called before
+the daemon and the service. This is the new concept that predates the 2 others.</p>
+<p>The concept of API is intended to allow the definition of multiple APIs
+by a same "binding" (a dynamically loaded library).</p>
+<p>Because there is potentially several "API", the functions that were without
+context in bindings version 2 need now to tell what API is consumer.</p>
+<p>To be compatible with version 2, bindings v3 still have a default hidden
+context: the default API named <strong>afbBindingV3root</strong>.</p>
+<p>To summarize, the functions of class <strong>daemon</strong> and <strong>service</strong> use the default
+hidden API.</p>
+<p>It is encouraged to avoid use of functions of class <strong>daemon</strong> and <strong>service</strong>.
+You should replace these implicit calls to explicit <strong>api</strong> calls that 
+reference <strong>afbBindingV3root</strong>.</p>
+<p>Same thing for the logging macros: <strong>AFB_ERROR</strong>, <strong>AFB_WARNING</strong>,
+<strong>AFB_NOTICE</strong>, <strong>AFB_INFO</strong>, <strong>AFB_DEBUG</strong> that becomes respectively
+<strong>AFB_API_ERROR</strong>, <strong>AFB_API_WARNING</strong>, <strong>AFB_API_NOTICE</strong>, <strong>AFB_API_INFO</strong>,
+<strong>AFB_API_DEBUG</strong>.</p>
+<p>Example of 2 equivalent writes:</p>
+<pre><code class="C">    AFB_NOTICE(&quot;send stress event&quot;);
+        afb_daemon_broadcast_event(stressed_event, NULL);
+</code></pre>
+
+<p>or </p>
+<pre><code class="C">    AFB_API_NOTICE(afbBindingV3root, &quot;send stress event&quot;);
+        afb_api_broadcast_event(afbBindingV3root, stressed_event, NULL);
+</code></pre>
+
+<h3 id="the-reply-mechanism-predates-success-and-fail">the reply mechanism predates success and fail</h3>
+<h3 id="subcall-has-more-power">subcall has more power</h3>
+<h2 id="task-list-for-the-migration">Task list for the migration</h2>
+<p>This task list is:</p>
+<ol>
+<li>Use the automatic migration procedure described below</li>
+<li>Adapt the functions <strong>preinit</strong>, <strong>init</strong> and <strong>onevent</strong></li>
+<li>Consider use of the new reply</li>
+<li>Consider use of the new (sub)call</li>
+<li>Consider use of event handlers</li>
+</ol>
+<p>The remaining chapters explain these task with more details.</p>
+<h2 id="automatic-migration">Automatic migration!</h2>
+<p>A tiny <strong>sed</strong> script is intended to perform a first pass on the code that
+you want to upgrade. It can be done using <strong>curl</strong> and applied using <strong>sed</strong>
+as below.</p>
+<pre><code class="bash">BASE=https://git.automotivelinux.org/src/app-framework-binder/plain
+SED=migration-to-binding-v3.sed
+curl -o $SED $BASE/docs/$SED
+sed -i -f $SED file1 file2 file3...
+</code></pre>
+
+<p>You can also follow
+<a href="https://git.automotivelinux.org/src/app-framework-binder/plain/docs/migration-to-binding-v3.sed">this link</a>
+and save the file.</p>
+<p>This automatic action does most of the boring job but not all the job.
+The remaining of this guide explains the missing part.</p>
+<h2 id="adapt-the-functions-preinit-init-and-onevent">Adapt the functions preinit, init and onevent</h2>
+<p>The signature of the functions <strong>preinit</strong>, <strong>init</strong> and <strong>onevent</strong> changed
+to include the target api.</p>
+<p>The functions of the v2:</p>
+<pre><code class="C">int (*preinit)();
+int (*init)();
+void (*onevent)(const char *event, struct json_object *object);
+</code></pre>
+
+<p>Gain a new first argument of type <strong>afb_api_t</strong> as below:</p>
+<pre><code class="C">int (*preinit)(afb_api_t api);
+int (*init)(afb_api_t api);
+void (*onevent)(afb_api_t api, const char *event, struct json_object *object);
+</code></pre>
+
+<p>For the migration, it is enough to just add the new argument without
+using it.</p>
+<h2 id="consider-use-of-the-new-reply">Consider use of the new reply</h2>
+<p>The v3 allows error reply with JSON object. To achieve it, an unified
+reply function's family is introduced:</p>
+<pre><code class="C">void afb_req_reply(afb_req_t req, json_object *obj, const char *error, const char *info);
+void afb_req_reply_v(afb_req_t req, json_object *obj, const char *error, const char *info, va_list args);
+void afb_req_reply_f(afb_req_t req, json_object *obj, const char *error, const char *info, ...);
+</code></pre>
+
+<p>The functions <strong>success</strong> and <strong>fail</strong> are still supported.
+These functions are now implemented as the following macros:</p>
+<pre><code class="C">#define afb_req_success(r,o,i)      afb_req_reply(r,o,NULL,i)
+#define afb_req_success_f(r,o,...)  afb_req_reply_f(r,o,NULL,__VA_ARGS__)
+#define afb_req_success_v(r,o,f,v)  afb_req_reply_v(r,o,NULL,f,v)
+#define afb_req_fail(r,e,i)     afb_req_reply(r,NULL,e,i)
+#define afb_req_fail_f(r,e,...)     afb_req_reply_f(r,NULL,e,__VA_ARGS__)
+#define afb_req_fail_v(r,e,f,v)     afb_req_reply_v(r,NULL,e,f,v)
+</code></pre>
+
+<p>This is a decision of the developer to switch to the new family
+<strong>afb_req_reply</strong> or to keep the good old functions <strong>afb_req_fail</strong>
+adn <strong>afb_req_success</strong>.</p>
+<h2 id="consider-use-of-the-new-subcall">Consider use of the new (sub)call</h2>
+<p>The new call and subcall (the functions <strong>afb_api_call</strong>, <strong>afb_api_call_sync</strong>,
+<strong>afb_req_subcall</strong> and <strong>afb_req_subcall_sync</strong>) functions are redesigned
+to better fit the new reply behaviour. In most case the developer will benefit
+of the new behavior that directly gives result and error without enforcing
+to parse the JSON object result.</p>
+<p>The subcall functions are also fully redesigned to allow precise handling
+of the context and event subscriptions. The new design allows you to specify:</p>
+<ul>
+<li>whether the subcall is made in the session of the caller or in the session
+   of the service</li>
+<li>whether the credentials to use are those of the caller or those of the
+   service</li>
+<li>whether the caller or the service or both or none will receive the
+   eventually events during the subcall.</li>
+</ul>
+<p>See <a href="reference-v3/func-api.html#calls-and-job-functions">calls</a> and
+<a href="reference-v3/func-req.html#subcall-functions">subcalls</a>.</p>
+<p>The table below list the changes to apply:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Name in Version 2</th>
+<th align="center">New name of Version 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">afb_req_subcall</td>
+<td align="center">afb_req_subcall_legacy</td>
+</tr>
+<tr>
+<td align="center">afb_req_subcall_sync</td>
+<td align="center">afb_req_subcall_sync_legacy</td>
+</tr>
+<tr>
+<td align="center">afb_service_call</td>
+<td align="center">afb_service_call_legacy</td>
+</tr>
+<tr>
+<td align="center">afb_service_call_sync</td>
+<td align="center">afb_service_call_sync_legacy</td>
+</tr>
+<tr>
+<td align="center">afb_req_subcall_req</td>
+<td align="center">afb_req_subcall_req (same but obsolete)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="consider-use-of-event-handlers">Consider use of event handlers</h2>
+<p>Binding V3 brings new ways of handling event in services. You can register
+functions that will handle specific events and that accept closure arguments.</p>
+<p>See <a href="reference-v3/func-api.html#event-functions"><strong>afb_api_event_handler_add</strong> and <strong>afb_api_event_handler_del</strong></a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../afb-overview/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../afb-events-guide/" class="btn btn-neutral" title="Binder events guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../afb-events-guide/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../afb-overview/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../../../..';</script>
+    <script src="../../../../../js/theme.js" defer></script>
+      <script src="../../../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
