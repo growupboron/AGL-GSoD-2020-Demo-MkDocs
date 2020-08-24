@@ -4,4 +4,4 @@
 
 ### Readthedocs : https://agl-gsod-2020-demo-mkdocs.readthedocs.io/
 
-### [GSoD 2020 Proposal](https://docs.google.com/document/d/11s4pxRZka7JzUyczEd7RyRNNw66ihrgXP1f5-VgzcPY/edit?usp=sharing)
+### [GSoD 2020 Proposal](https://growupboron.github.io/blog/the-linux-foundation-gsod-2020-proposal/)
