@@ -1,4 +1,4 @@
-## This is demo site for GSoD 2020 for Automotive Grade Linux.
+## This is demo site for GSoD 2020 at Automotive Grade Linux.
 
 ### Github page : https://growupboron.github.io/AGL-GSoD-2020-Demo-MkDocs/
 
